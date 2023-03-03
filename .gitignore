@@ -1,0 +1,15 @@
+# MPC-AB2 Lecture4
+
+*.mat
+*.jpg
+*.jpeg
+*.png
+*.npy
+*.asv
+*.db
+*.npz
+*.txt
+*.zip
+
+.idea
+.ipynb_checkpoints
