@@ -1,6 +1,6 @@
 # Lecture4 - STEREOSCOPY AND MULTISCOPY
 
-[**Benchmark Results**](https://docs.google.com/spreadsheets/d/13iQPgrW7Jq5XebiLk6vdVsncdPDLetl_/edit?usp=sharing&ouid=112211468254352441667&rtpof=true&sd=true)
+[**Benchmark Results**](https://docs.google.com/spreadsheets/d/11UcwEuCFiWE4FehATfXK9th98psc15kI/edit?usp=sharing&ouid=112211468254352441667&rtpof=true&sd=true)
 
 ## Preparation
 
@@ -32,5 +32,5 @@ has the following inputs and outputs:
 6. Store your implemented algorithm as a form of function `[depthMaps] = compute_depth(path)`; for *depthMaps* see above; *path* is the path to the *Data* folder with subfolders of individual scenes. Make sure the function will open individual subfolders, compute the depth map and store it in the cell array with the order of scene preserved. The function will be used for evaluation of universality of your solution using another input scenes. **Push** your program implementations into GitHub repository **Lecture4_23** using the **branch of your team** (stage changed -> fill commit message -> sign off -> commit -> push -> select *NAME_OF_YOUR_TEAM* branch -> push -> manager-core -> web browser -> fill your credentials).
 7. Create a reconstructed 3D surface image of your best-estimated depth map and use representation by a point cloud (due to the high resolution of original images use subsampled
 space only). Check the quality of the reconstruction. You can rotate the 3D plot and make sure that the reconstructed objects are clearly visible.
-8. Submit *.tiff* image of the 3d surface and the best-obtained result of your method evaluated on the competition dataset using the evaluation function (i.e. submit the calculated evaluation values) into a shared [Excel table](https://docs.google.com/spreadsheets/d/13iQPgrW7Jq5XebiLk6vdVsncdPDLetl_/edit?usp=sharing&ouid=112211468254352441667&rtpof=true&sd=true). The evaluation of results from each team will be presented at the end of the lecture.
+8. Submit *.tiff* image of the 3d surface and the best-obtained result of your method evaluated on the competition dataset using the evaluation function (i.e. submit the calculated evaluation values) into a shared [Excel table](https://docs.google.com/spreadsheets/d/11UcwEuCFiWE4FehATfXK9th98psc15kI/edit?usp=sharing&ouid=112211468254352441667&rtpof=true&sd=true). The evaluation of results from each team will be presented at the end of the lecture.
 
