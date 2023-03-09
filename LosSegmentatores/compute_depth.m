@@ -35,7 +35,7 @@ for i = 1:length(folders)
 %     disparityMap = imgaussfilt(disparityMap,0.01,"FilterSize",15);
 
 
-    % other method
+    % other method from https://github.com/asiryan/Fast-Stereo-Disparity-Estimator
     win=25;
     max_dis=250;
     weight=0.5;
