@@ -1,0 +1,1 @@
+[MAE, percantageMissing, details] = evaluateReconstruction(depthMaps)
