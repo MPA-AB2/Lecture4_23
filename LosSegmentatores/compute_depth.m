@@ -36,9 +36,9 @@ for i = 1:length(folders)
 
 
     % other method
-    win=10;
-    max_dis=300;
-    weight=2;
+    win=25;
+    max_dis=250;
+    weight=0.5;
 
     tic;
     disparityMap = disparity_estimator(im0, im1, win, max_dis, weight);
