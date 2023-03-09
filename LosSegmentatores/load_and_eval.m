@@ -6,15 +6,21 @@ path = "V:\MPA-AB2\Lecture4_23\Data";
 %% evaluate results
 [MAE, percantageMissing, details] = evaluateReconstruction(depthMaps);
 %% create 3D surface 
-% we have to obtain the coordinate matrix
+% load image
+colorImage = imread(strcat(path,'\im1\im0.png'));
+% we have to obtain the camera info
+calibInfoFile = fopen(strcat(path,'\im1\calib.txt'),'r');
+calibCode = textscan(calibInfoFile,'%s','delimiter','\n');
+fclose(calibInfoFile);
+    for j = 1:length(calibCode{1})
+        eval(strcat(calibCode{1}{j},';'))
+    end
+focalLength = [cam0(1,1), cam0(1,1)];
+principalPoint = [cam0(1,3),cam0(2,3)];
 
+intrinsics = cameraIntristics(focalLength,principalPoint,size(depthMaps{2},[1,2]));
 % then create a pointCloud object
-ptCloud = pointCloud(points3D);%, 'Color', frameLeftRect
-
-% Create a streaming point cloud viewer
-% player3D = pcplayer([-3, 3], [-3, 3], [0, 8], 'VerticalAxis', 'y', ...
-%     'VerticalAxisDir', 'down');
+ptCloud = pcfromdepth(depthMaps{2},1,intrinsics,ColorImage=colorImage);%, 'Color', frameLeftRect
 
 % Visualize the point cloud
-% view(player3D, ptCloud);
-pcshow(ptCloud)
+pcshow(ptCloud,VerticalAxis='Y', VerticalAxisDir='Up', ViewPlane='YX')
