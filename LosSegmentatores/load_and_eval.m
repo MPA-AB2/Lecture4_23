@@ -6,6 +6,7 @@ path = "V:\MPA-AB2\Lecture4_23\Data";
 %% evaluate results
 [MAE, percantageMissing, details] = evaluateReconstruction(depthMaps);
 %% create 3D view
+colorImage = im2double(imread(strcat(path,'\im2\im0.png')));
 n=0;
 [s1, s2] = size(depthMaps{2});
 xyz = zeros(338400,3);
@@ -20,5 +21,5 @@ for i = 1:4:s1
   end
 end
 
-ptCloud = pointCloud(xyz);%,'Color',colors
+ptCloud = pointCloud(xyz,'Color',colors);%,'Color',colors
 pcshow(ptCloud,"VerticalAxis","X")
