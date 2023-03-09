@@ -14,7 +14,6 @@ depthMaps = cell(size(folderNames,1),1);
 
 for i=1:size(folderNames,1)
     cd([path,'\',folderNames(i,:)])
-%     disp(i)
     
 im0 = imread('im0.png');
 im1 = imread('im1.png');
