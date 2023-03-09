@@ -27,6 +27,19 @@ for d = 1:length(listing)
             end
         end
         depth_map = calculate_disparity_map2(im0, im1, config);
-        depthMaps{end+1} = medfilt2(depth_map, [3 3]);
+        depthMaps{end+1} = medfilt2(depth_map, [9 9]);
+%         depth_map = calculate_disparity_map2(im0, im1, config);
+%         sdm = sum(depth_map);
+%         for i = 1:length(sdm)
+%             if sdm(i) > 0
+%                 offset = i-1;
+%                 break;
+%             end
+%         end
+%         medf_depth_map = medfilt2(depth_map, [5 5]);
+%         composed_dept_map = medf_depth_map;
+%         composed_dept_map(:, 1:offset) = depth_map(:, 1:offset);
+%         depthMaps{end+1} = composed_dept_map;
+        % depthMaps{end+1} = wiener2(depth_map, [15 15]);
     end
 end
