@@ -37,14 +37,14 @@ for i = 1:length(folders)
 
     % other method
     win=10;
-    max_dis=350;
-    weight=10;
+    max_dis=300;
+    weight=2;
 
     tic;
     disparityMap = disparity_estimator(im0, im1, win, max_dis, weight);
     toc;
 
-    disparityMap = imgaussfilt(disparityMap,0.01,"FilterSize",21);
+    disparityMap = imgaussfilt(disparityMap,0.1,"FilterSize",11);
     % calculating the depth map
     depthMap = (baseline * focalLength) ./ (double(disparityMap) + doffs);
 
