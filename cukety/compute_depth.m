@@ -1,7 +1,7 @@
 function [depthMaps] = compute_depth(path)
+% poznamka: 8 iteraci a podvzorkovat
 %% nacteni dat
 depthMaps = cell(1,5);
-
 for i = 1:5
 I1 = imread(append(path, '\im', num2str(i), '\im0.png'));
 I2 = imread(append(path, '\im', num2str(i), '\im1.png'));
@@ -16,18 +16,17 @@ offs = cal{3,2};
 I1 = rgb2gray(I1); %I1 = I1(1:4:end,1:4:end);
 I2 = rgb2gray(I2); %I2 = I2(1:4:end,1:4:end);
 % A = stereoAnaglyph(I1,I2);
-% figure
-% imshow(A)
-% title('Red-Cyan composite view of the rectified stereo pair image')
+% figure(); imshow(A); title('Red-Cyan composite view of the rectified stereo pair image');
 %% disparitni mapa - https://www.mathworks.com/help/vision/ref/disparitybm.html?fbclid=IwAR2ct3m86lg8ZPWMsGPF3VWXuipVOOe-BdVfbbr92SXZw0g26SSpFwzL6pM
 disparityRange = [0 256];
-disparityMap = disparityBM(I1,I2,'DisparityRange',disparityRange,'UniquenessThreshold',1);%,'TextureThreshold', 0.001);
+disparityMap = double(disparityBM(I1,I2,'DisparityRange',disparityRange,'UniquenessThreshold',1,"ContrastThreshold",0.3,"DistanceThreshold",800));
+% disparityMap = disparityBM(I1,I2,'DisparityRange',disparityRange,'UniquenessThreshold',1);%,'TextureThreshold', 0.001);
 tf = isnan(disparityMap);
 disparityMap(tf) = 0;
 % disparityRange = [0 128];
 % disparityMap = disparitySGM(I1,I2,'DisparityRange',disparityRange);
-
-% J = medfilt2(disparityMap,[4 4]);
+disparityMap = medfilt2(disparityMap,[30 30]);
+disparityMap = imgaussfilt(disparityMap,9);
 
 % figure(); imshow(disparityMap,disparityRange); title('Disparity Map'); colormap jet; colorbar %zobrazeni
 
