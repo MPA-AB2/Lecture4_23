@@ -1,5 +1,4 @@
-close all;
-path = 'Lecture4_data/Data';
+function [depthMaps] = compute_depth(path)
 listing = dir(path);
 scenes = cell(0);
 depthMaps = cell(0);
@@ -27,6 +26,7 @@ for d = 1:length(listing)
                 end
             end
         end
-        depthMaps{end+1} = calculate_disparity_map2(im0, im1, config);
+        depth_map = calculate_disparity_map2(im0, im1, config);
+        depthMaps{end+1} = medfilt2(depth_map, [3 3]);
     end
 end
