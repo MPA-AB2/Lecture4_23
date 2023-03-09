@@ -57,7 +57,7 @@ for i = 1:numOfScenes
     depthMaps{i} = fillmissing(depthMaps{i},'spline',1,'EndValues','nearest');
     
     % Filter depth maps
-    depthMaps{i} = medfilt2(depthMaps{i},[45 45]);
+    depthMaps{i} = medfilt2(depthMaps{i},[45 45],'symmetric');
 end
 
 
